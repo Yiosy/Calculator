@@ -1,0 +1,32 @@
+* {
+  box-sizing: border-box;
+}
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.frame {
+  color: red;
+  background-color: red;
+  display: flex;
+  flex-direction: column;
+  height: 25rem;
+}
+.container {
+  display: flex;
+  flex-flow: row wrap;
+}
+button {
+  height: 88px;
+  flex-wrap: wrap;
+  width: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  position: relative;
+  flex-basis: 25%;
+}
+input {
+  height: 60px;
+}
