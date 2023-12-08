@@ -30,3 +30,6 @@ function operate(operator, firstArgument, secondArgument) {
       break;
   }
 }
+const input = document.querySelector("input");
+const clearButton = document.querySelector(".clearButton");
+clearButton.addEventListener("click", () => (input.value = "test"));

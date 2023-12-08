@@ -19,6 +19,7 @@ body {
 }
 button {
   height: 88px;
+  border: solid black;
   flex-wrap: wrap;
   width: 20px;
   display: flex;
@@ -26,6 +27,8 @@ button {
   justify-content: space-around;
   position: relative;
   flex-basis: 25%;
+  font-size: 60px;
+  cursor: pointer;
 }
 input {
   height: 60px;
