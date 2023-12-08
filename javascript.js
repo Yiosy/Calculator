@@ -32,4 +32,9 @@ function operate(operator, firstArgument, secondArgument) {
 }
 const input = document.querySelector("input");
 const clearButton = document.querySelector(".clearButton");
-clearButton.addEventListener("click", () => (input.value = "test"));
+const numbers = document.querySelectorAll(".number");
+numbers.forEach((x, i) =>
+  x.addEventListener("click", () => (input.value = `${input.value}${i + 1}`))
+);
+
+clearButton.addEventListener("click", () => (input.value = ""));
