@@ -1,7 +1,15 @@
 let firstNumber;
 let secondNumber;
 let operator;
-let isResult = true;
+let isResult;
+let divideZero;
+function Clear() {
+  (input.value = null),
+    (operator = null),
+    (firstNumber = null),
+    (secondNumber = null);
+  isResult = null;
+}
 
 function add(a, b) {
   return a + b;
@@ -13,7 +21,11 @@ function multiply(a, b) {
   return a * b;
 }
 function divide(a, b) {
-  return a / b;
+  if (b === "0") {
+    alert("sd");
+  } else {
+    return a / b;
+  }
 }
 function operate(operator, firstArgument, secondArgument) {
   switch (operator) {
@@ -37,7 +49,7 @@ function Values(x) {
     if (firstNumber == null) {
       firstNumber = Number(input.value);
       operator = x;
-      input.value = "";
+      input.value = " ";
     } else if (
       typeof firstNumber == "number" &&
       typeof secondNumber !== "number"
@@ -75,20 +87,22 @@ numbers.forEach((x, i) =>
   })
 );
 
-clearButton.addEventListener(
-  "click",
-  () => (
-    (input.value = null),
-    (operator = null),
-    (firstNumber = null),
-    (secondNumber = null)
-  )
-);
+clearButton.addEventListener("click", () => Clear());
 
-zero.addEventListener("click", () => (input.value = input.value + "0"));
+zero.addEventListener("click", () => {
+  if (isResult == true) {
+    isResult = "false";
+    input.value = null;
+    secondNumber = null;
+    input.value = `0`;
+  } else {
+    input.value = `${input.value}${0}`;
+  }
+});
 
 operatorAdd.addEventListener("click", () => {
   Values("+");
+  Equals();
 });
 
 operatorSubstract.addEventListener("click", () => {
@@ -103,16 +117,26 @@ operatorDivide.addEventListener("click", () => {
   Values("/");
 });
 
-equals.addEventListener("click", () => {
+function zeroCheck() {
+  if (input.value == "Infinity") {
+    alert("yikes");
+    Clear();
+  } else {
+    firstNumber = Number(input.value);
+  }
+}
+
+function Equals() {
   if (typeof firstNumber == "number" && typeof secondNumber == "number") {
     input.value = operate(operator, firstNumber, secondNumber);
-    firstNumber = Number(input.value);
-
     isResult = true;
   } else if (typeof firstNumber == "number" && secondNumber !== "number") {
     secondNumber = Number(input.value);
     input.value = operate(operator, firstNumber, secondNumber);
-    firstNumber = Number(input.value);
     isResult = true;
   }
+}
+equals.addEventListener("click", () => {
+  Equals();
+  zeroCheck();
 });
