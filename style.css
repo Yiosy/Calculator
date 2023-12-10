@@ -1,6 +1,6 @@
 * {
   box-sizing: border-box;
-  background-color: grey;
+  background-color: black;
 }
 body {
   display: flex;
@@ -12,7 +12,7 @@ body {
   display: flex;
   flex-direction: column;
   border-radius: 8px;
-  border: solid black 5px;
+  border: solid grey 5px;
 }
 .container {
   display: flex;
@@ -33,10 +33,24 @@ button {
 }
 input {
   flex-shrink: 0;
-  height: 60px;
+  height: 82px;
   border: solid black 2px;
   background-color: #b8bcb4;
+  font-size: 30px;
+  font-weight: 1000;
+  color: black;
+  text-align: right;
 }
 .big {
   flex-grow: 1;
+}
+.operator {
+  background-color: blue;
+}
+.color1,
+.number {
+  background-color: darkgreen;
+}
+.color2 {
+  background-color: red;
 }
