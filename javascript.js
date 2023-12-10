@@ -73,6 +73,24 @@ const operatorSubstract = document.getElementById("subtract");
 const operatorMultiply = document.getElementById("multiply");
 const operatorDivide = document.getElementById("divide");
 const equals = document.getElementById("equals");
+const del = document.getElementById("del");
+const dot = document.getElementById("dot");
+const toggle = document.getElementById("toggle");
+
+toggle.addEventListener("click", () => (input.value = input.value * -1));
+
+function checkDot() {
+  return input.value.includes(".");
+}
+
+dot.addEventListener("click", () => {
+  if (checkDot() == true) {
+  } else {
+    input.value = input.value + ".";
+  }
+});
+
+del.addEventListener("click", () => (input.value = input.value.slice(0, -1)));
 
 numbers.forEach((x, i) =>
   x.addEventListener("click", () => {

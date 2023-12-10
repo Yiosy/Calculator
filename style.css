@@ -1,5 +1,6 @@
 * {
   box-sizing: border-box;
+  background-color: grey;
 }
 body {
   display: flex;
@@ -8,10 +9,10 @@ body {
 }
 .frame {
   color: red;
-  background-color: red;
   display: flex;
   flex-direction: column;
-  height: 25rem;
+  border-radius: 8px;
+  border: solid black 5px;
 }
 .container {
   display: flex;
