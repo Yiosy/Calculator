@@ -101,27 +101,38 @@ zero.addEventListener("click", () => {
 });
 
 operatorAdd.addEventListener("click", () => {
-  Values("+");
   Equals();
+  Values("+");
+  zeroCheck();
+  operator = "+";
 });
 
 operatorSubstract.addEventListener("click", () => {
+  Equals();
   Values("-");
+  zeroCheck();
+  operator = "-";
 });
 
 operatorMultiply.addEventListener("click", () => {
+  Equals();
   Values("*");
+  zeroCheck();
+  operator = "*";
 });
 
 operatorDivide.addEventListener("click", () => {
+  Equals();
   Values("/");
+  zeroCheck();
+  operator = "/";
 });
 
 function zeroCheck() {
-  if (input.value == "Infinity") {
+  if (input.value == "Infinity" || input.value == "NaN") {
     alert("yikes");
     Clear();
-  } else {
+  } else if (isResult == true) {
     firstNumber = Number(input.value);
   }
 }
