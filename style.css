@@ -36,6 +36,6 @@ input {
   border: solid black 2px;
   background-color: #b8bcb4;
 }
-#test {
+.big {
   flex-grow: 1;
 }
