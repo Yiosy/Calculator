@@ -31,5 +31,11 @@ button {
   cursor: pointer;
 }
 input {
+  flex-shrink: 0;
   height: 60px;
+  border: solid black 2px;
+  background-color: #b8bcb4;
+}
+#test {
+  flex-grow: 1;
 }
