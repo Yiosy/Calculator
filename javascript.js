@@ -82,15 +82,19 @@ toggle.addEventListener("click", () => (input.value = input.value * -1));
 function checkDot() {
   return input.value.includes(".");
 }
-
-dot.addEventListener("click", () => {
+function addDot() {
   if (checkDot() == true) {
   } else {
     input.value = input.value + ".";
   }
+}
+dot.addEventListener("click", () => {
+  addDot();
 });
-
-del.addEventListener("click", () => (input.value = input.value.slice(0, -1)));
+function deleteInput() {
+  input.value = input.value.slice(0, -1);
+}
+del.addEventListener("click", () => deleteInput());
 
 numbers.forEach((x, i) =>
   x.addEventListener("click", () => {
@@ -119,34 +123,26 @@ function zeroInput() {
 zero.addEventListener("click", () => {
   zeroInput();
 });
-
-operatorAdd.addEventListener("click", () => {
+function operatorsCalc(operation) {
   Equals();
-  Values("+");
+  Values(operation);
   zeroCheck();
-  operator = "+";
+  operator = operation;
+}
+operatorAdd.addEventListener("click", () => {
+  operatorsCalc("+");
 });
 
 operatorSubstract.addEventListener("click", () => {
-  Equals();
-  Values("-");
-  zeroCheck();
-  operator = "-";
+  operatorsCalc("-");
 });
 
 operatorMultiply.addEventListener("click", () => {
-  Equals();
-  Values("*");
-  zeroCheck();
-  operator = "*";
+  operatorsCalc("*");
 });
-operatorDivide.addEventListener("Keydown.Digit1", () => console.log("test"));
 
 operatorDivide.addEventListener("click", () => {
-  Equals();
-  Values("/");
-  zeroCheck();
-  operator = "/";
+  operatorsCalc("/");
 });
 function keyCheck(a, b) {
   if ((event.code === a && !event.shiftKey) || event.key === b) {
@@ -190,3 +186,25 @@ equals.addEventListener("click", () => {
 for (let i = 0; i < 10; i++) {
   document.addEventListener("keydown", () => keyCheck(`digit${i}`, `${i}`));
 }
+document.addEventListener("keydown", (event) => {
+  if (event.key === "=") {
+    Equals();
+    zeroCheck();
+  } else if (event.key === "+") {
+    operatorsCalc("+");
+  } else if (event.key === "-") {
+    operatorsCalc("-");
+  } else if (event.key === "*") {
+    operatorsCalc("*");
+  } else if (event.key === "/") {
+    operatorsCalc("/");
+  } else if (event.key === "c") {
+    Clear();
+  } else if (event.key === "Backspace") {
+    deleteInput();
+  } else if (event.key === ".") {
+    addDot();
+  } else if (event.key === "`") {
+    input.value = input.value * -1;
+  }
+});
