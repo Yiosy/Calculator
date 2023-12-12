@@ -106,8 +106,7 @@ numbers.forEach((x, i) =>
 );
 
 clearButton.addEventListener("click", () => Clear());
-
-zero.addEventListener("click", () => {
+function zeroInput() {
   if (isResult == true) {
     isResult = "false";
     input.value = null;
@@ -116,6 +115,9 @@ zero.addEventListener("click", () => {
   } else {
     input.value = `${input.value}${0}`;
   }
+}
+zero.addEventListener("click", () => {
+  zeroInput();
 });
 
 operatorAdd.addEventListener("click", () => {
@@ -138,6 +140,7 @@ operatorMultiply.addEventListener("click", () => {
   zeroCheck();
   operator = "*";
 });
+operatorDivide.addEventListener("Keydown.Digit1", () => console.log("test"));
 
 operatorDivide.addEventListener("click", () => {
   Equals();
@@ -145,13 +148,27 @@ operatorDivide.addEventListener("click", () => {
   zeroCheck();
   operator = "/";
 });
-
+function keyCheck(a, b) {
+  if ((event.code === a && !event.shiftKey) || event.key === b) {
+    numbersKey();
+  }
+}
 function zeroCheck() {
   if (input.value == "Infinity" || input.value == "NaN") {
     alert("yikes");
     Clear();
   } else if (isResult == true) {
     firstNumber = Number(input.value);
+  }
+}
+function numbersKey() {
+  if (isResult == true) {
+    isResult = "false";
+    input.value = null;
+    secondNumber = null;
+    input.value = `${event.key}`;
+  } else {
+    input.value = `${input.value}${event.key}`;
   }
 }
 
@@ -169,3 +186,7 @@ equals.addEventListener("click", () => {
   Equals();
   zeroCheck();
 });
+
+for (let i = 0; i < 10; i++) {
+  document.addEventListener("keydown", () => keyCheck(`digit${i}`, `${i}`));
+}
